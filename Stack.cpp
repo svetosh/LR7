@@ -37,11 +37,6 @@ void push(Stack& stack, int value)
     ++stack.sizeStack;
 }
 
-int new_size(Stack& stack)
-{
-    return stack.sizeStack;
-}
-
 void destructor(Stack& stack)
 {
     while (stack.endNode != nullptr)
