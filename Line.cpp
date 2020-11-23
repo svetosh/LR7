@@ -57,15 +57,15 @@ void destructor(Line& line)
 
 int main()
 {
-    Line Jopa;
-    constructor(Jopa);
+    Line Joja;
+    constructor(Joja);
     for (int i = 0; i < 10; i++)
     {
-        push(Jopa, i);
+        push(Joja, i);
     }
     for (int i = 0; i < 3; i++)
     {
-        pop(Jopa);
+        pop(Joja);
     }
-    destructor(Jopa);
+    destructor(Joja);
 }
