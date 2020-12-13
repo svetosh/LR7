@@ -20,12 +20,24 @@ void constructor(Stack& stack)
 
 int pop(Stack& stack)
 {
+    if (stk.stack_size == 0)
+    {
+        return 0;
+    }
+    else
+    {
     int value = stack.endNode->value;
     Node* popNode = stack.endNode;
     stack.endNode = popNode->nextNode;
     delete popNode;
     --stack.sizeStack;
     return value;
+    }
+}
+
+int size(Stack& stack)
+{
+    return stack.stacksize;
 }
 
 void push(Stack& stack, int value)
