@@ -22,12 +22,24 @@ void constructor(Line& line)
 
 int pop(Line& line)
 {
+    if (line.lineSize == 0)
+    {
+        return 0;
+    }
+    else
+    {
     int value = line.begNode->value;
     Node* popNode = line.begNode;
     line.begNode = popNode->nextNode;
     delete popNode;
     --line.sizeLine;
     return value;
+    }
+}
+
+int size(Line& line)
+{
+    return line.lineSize;
 }
 
 void push(Line& line, int value)
