@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 
 struct Node
 {
@@ -18,35 +18,33 @@ void constructor(Stack& stack)
     stack.sizeStack = 0;
 }
 
+void push(Stack& stack, int value)
+{
+    Node* pushNode = new Node{ stack.endNode, value };
+    stack.endNode = pushNode;
+    ++stack.sizeStack;
+}
+
 int pop(Stack& stack)
 {
-    if (stk.stack_size == 0)
+    if (stack.sizeStack == 0)
     {
         return 0;
     }
     else
     {
-    int value = stack.endNode->value;
-    Node* popNode = stack.endNode;
-    stack.endNode = popNode->nextNode;
-    delete popNode;
-    --stack.sizeStack;
-    return value;
+        int value = stack.endNode->value;
+        Node* popNode = stack.endNode;
+        stack.endNode = popNode->nextNode;
+        delete popNode;
+        --stack.sizeStack;
+        return value;
     }
 }
 
 int size(Stack& stack)
 {
-    return stack.stacksize;
-}
-
-void push(Stack& stack, int value)
-{
-    Node* pushNode;
-    Node* endAdd = stack.endNode;
-    pushNode = new Node{ endAdd, value };
-    stack.endNode = pushNode;
-    ++stack.sizeStack;
+    return stack.sizeStack;
 }
 
 void destructor(Stack& stack)
@@ -54,7 +52,7 @@ void destructor(Stack& stack)
     while (stack.endNode != nullptr)
     {
         std::cout << pop(stack) << " ";
-    } 
+    }
 }
 
 int main()
