@@ -22,7 +22,7 @@ void push(Stack& stack, int value)
 {
     Node* pushNode = new Node{ stack.endNode, value };
     stack.endNode = pushNode;
-    ++stack.sizeStack;
+    stack.sizeStack++;
 }
 
 int pop(Stack& stack)
@@ -37,7 +37,7 @@ int pop(Stack& stack)
         Node* popNode = stack.endNode;
         stack.endNode = popNode->nextNode;
         delete popNode;
-        --stack.sizeStack;
+        stack.sizeStack--;
         return value;
     }
 }
