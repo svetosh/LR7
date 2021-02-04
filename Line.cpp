@@ -22,7 +22,7 @@ void constructor(Line& line)
 
 void push(Line& line, int value)
 {
-    Node* pushNode = new Node { nullptr, value };
+    Node* pushNode = new Node{ nullptr, value };
     if (line.endNode != nullptr)
     {
         line.endNode->nextNode = pushNode;
@@ -58,12 +58,34 @@ int size(Line& line)
     return line.sizeLine;
 }
 
-void destructor(Line& line)
-{
-    while (line.begNode != nullptr)
+void print(Line& line) {
+    Node* node = line.begNode;
+    if (line.begNode != nullptr) 
     {
-        std::cout << pop(line) << " ";
+        while (node != line.endNode) 
+        {
+            std::cout << node->value << " ";
+            node = node->nextNode;
+        }
+        std::cout << node->value << std::endl;
     }
+}
+
+void destructor(Line& line) 
+{
+    Node* node = line.begNode;
+    if (line.begNode != line.endNode)
+    {
+        while (line.begNode != line.begNode)
+        {
+            line.begNode = line.begNode->nextNode;
+            delete node;
+            node = line.begNode;
+        }
+        delete node;
+    }
+    line.begNode = nullptr;
+    line.begNode = line.begNode;
 }
 
 int main()
@@ -74,9 +96,11 @@ int main()
     {
         push(Joja, i);
     }
+    print(Joja);
     for (int i = 0; i < 3; i++)
     {
         pop(Joja);
     }
+    print(Joja);
     destructor(Joja);
 }
