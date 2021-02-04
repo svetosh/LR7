@@ -47,11 +47,32 @@ int size(Stack& stack)
     return stack.sizeStack;
 }
 
+void print(const Stack& stack)
+{
+    Node* node = stack.endNode;
+    if (node != nullptr)
+    {
+        while (node != nullptr)
+        {
+            std::cout << node->value << " ";
+            node = node->nextNode;
+        }
+    }
+    std::cout << std::endl;
+}
+
 void destructor(Stack& stack)
 {
-    while (stack.endNode != nullptr)
+    Node* node = stack.endNode;
+    if (node != nullptr) 
     {
-        std::cout << pop(stack) << " ";
+        while (stack.endNode != nullptr) 
+        {
+            stack.endNode = stack.endNode->nextNode;
+            delete node;
+            node = stack.endNode;
+        }
+        delete node;
     }
 }
 
@@ -63,9 +84,11 @@ int main()
     {
         push(Joja, i);
     }
+    print(Joja);
     for (int i = 0; i < 3; i++)
     {
         pop(Joja);
     }
+    print(Joja);
     destructor(Joja);
 }
